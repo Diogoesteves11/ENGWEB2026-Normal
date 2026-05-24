@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.w3-panel.w3-pale-red.w3-border
+    h2 Erro
+    p= message
+    if error && error.status
+      p Status: #{error.status}
+    if error && error.stack
+      pre= error.stack
+  p
+    a.w3-button.w3-light-grey(href="/") <- Voltar a pagina principal

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h2= "Detalhe: " + (item.id || item._id)
+  //- TODO: substituir campos conforme o dataset
+  ul.w3-ul.w3-card-2
+    each value, key in item
+      li
+        strong= key + ": "
+        if Array.isArray(value)
+          span= "(" + value.length + " items)"
+        else if typeof value === 'object'
+          span= JSON.stringify(value)
+        else
+          span= value
+
+  //- TODO: se houver sub-lista (musicas, capitulos, episodios...), renderizar tabela aqui
+  //- Exemplo:
+  //- if item.sublista && item.sublista.length
+  //-   h3 Sub-lista
+  //-   table.w3-table.w3-striped.w3-bordered
+  //-     thead.w3-dark-grey
+  //-       tr
+  //-         th Campo1
+  //-         th Campo2
+  //-     tbody
+  //-       each s in item.sublista
+  //-         tr
+  //-           td= s.campo1
+  //-           td= s.campo2
+
+  p.w3-margin-top
+    a.w3-button.w3-light-grey(href="/") <- Voltar a pagina principal

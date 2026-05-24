@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h2= titulo || "Categoria"
+
+  //- TODO: uma ou mais tabelas conforme o enunciado.
+  //- Padrao tipico: "registos em que aparece" + "registos que organizou/criou".
+
+  if listaA && listaA.length
+    h3= tituloA || "Lista A"
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead.w3-dark-grey
+        tr
+          th Id
+          //- th Campo2
+      tbody
+        each item in listaA
+          tr
+            td
+              a(href="/" + item.id)= item.id
+            //- td= item.campo2
+  else if listaA
+    p.w3-text-grey (vazio)
+
+  if listaB && listaB.length
+    h3.w3-margin-top= tituloB || "Lista B"
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead.w3-dark-grey
+        tr
+          th Id
+          //- th Campo2
+      tbody
+        each item in listaB
+          tr
+            td
+              a(href="/" + item.id)= item.id
+            //- td= item.campo2
+
+  p.w3-margin-top
+    a.w3-button.w3-light-grey(href="/") <- Voltar a pagina principal

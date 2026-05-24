@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2 Lista
+  //- TODO: substituir colunas e campos conforme o dataset
+  if lista && lista.length
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead.w3-dark-grey
+        tr
+          th Id
+          //- th NomeColuna2
+          //- th NomeColuna3
+      tbody
+        each item in lista
+          tr
+            td
+              a(href="/" + (item.id || item._id))= (item.id || item._id)
+            //- td= item.campo2
+            //- td
+            //-   a(href="/categoria/" + item.campoLink)= item.campoLink
+  else
+    p.w3-text-grey (sem registos)
