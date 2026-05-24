@@ -44,21 +44,36 @@ nomes de container.
 
 ## Import do dataset
 
-Forma 1 - automatico via Mongo Dockerfile: basta colocar o ficheiro JSON
-(formato array `[{...}, {...}]`) em `ex1/dataset/` e fazer `docker compose
-up --build`. O `init.sh` deteta os `.json` e faz `mongoimport` na primeira
-inicializacao do volume.
+### Workflow com Docker (recomendado)
 
-Forma 2 - script Node a partir do host (lida com object-map `{ "k": {...} }`
-e converte para array automaticamente):
+1. **Se o dataset for object-map** (`{ "k": {...} }`), converter para array primeiro:
+   ```bash
+   cd ex1
+   python scripts/convert-dataset.py dataset/<ficheiro>.json
+   ```
+   Gera `dataset/<ficheiro>-processed.json` (array, bem formatado).
+
+2. **Colocar o JSON em `ex1/dataset/`** (original ou `-processed.json`).
+
+3. **Build e arranque:**
+   ```bash
+   docker compose up -d --build
+   ```
+   O `init.sh` dentro do Mongo deteta `*.json` e faz `mongoimport --jsonArray` na primeira inicializacao do volume.
+
+4. **Para re-importar** (apaga dados e re-importa):
+   ```bash
+   docker compose down -v && docker compose up -d --build
+   ```
+
+### Alternativa: script Node (sem Docker)
 
 ```bash
 cd ex1
 npm i
 DB_NAME=<nome> COLLECTION=<col> npm run import -- dataset/<ficheiro>.json
 ```
-
-Para re-importar (apaga volume e re-cria): `docker compose down -v && docker compose up -d --build`.
+Requer Mongo a correr localmente (localhost:27017).
 
 ## Correr localmente (sem docker)
 
