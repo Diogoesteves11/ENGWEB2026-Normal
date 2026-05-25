@@ -7,11 +7,6 @@ router.get('/', function (req, res) {
   res.jsonp({ ok: true, msg: 'API jogostabuleiro pronta' });
 });
 
-// ---------------------------------------------------------------------
-// GET /jogos
-//   - sem query  -> lista resumida: _id, name, year, category, minPlayers
-//   - ?editora=E -> jogos publicados pela editora E: _id, id, name, year
-// ---------------------------------------------------------------------
 router.get('/jogos', function (req, res) {
   if (req.query.editora) {
     Jogo.find(
@@ -35,9 +30,7 @@ router.get('/jogos', function (req, res) {
   }
 });
 
-// ---------------------------------------------------------------------
-// GET /jogos/:id  -> documento completo (todos os campos)
-// ---------------------------------------------------------------------
+
 router.get('/jogos/:id', function (req, res) {
   Jogo.findOne({ $or: [{ id: req.params.id }, { _id: req.params.id }] })
     .then(function (data) {
@@ -47,9 +40,7 @@ router.get('/jogos/:id', function (req, res) {
     .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
 });
 
-// ---------------------------------------------------------------------
-// POST /jogos  -> cria um novo jogo
-// ---------------------------------------------------------------------
+
 router.post('/jogos', function (req, res) {
   var doc = Object.assign({}, req.body);
   if (!doc._id) doc._id = doc.id || crypto.randomUUID();
@@ -58,9 +49,7 @@ router.post('/jogos', function (req, res) {
     .catch(function (err) { res.status(400).jsonp({ error: err.message }); });
 });
 
-// ---------------------------------------------------------------------
-// PUT /jogos/:id  -> altera o jogo identificado por id
-// ---------------------------------------------------------------------
+
 router.put('/jogos/:id', function (req, res) {
   Jogo.findOneAndUpdate(
     { $or: [{ id: req.params.id }, { _id: req.params.id }] },
@@ -74,9 +63,7 @@ router.put('/jogos/:id', function (req, res) {
     .catch(function (err) { res.status(400).jsonp({ error: err.message }); });
 });
 
-// ---------------------------------------------------------------------
-// DELETE /jogos/:id
-// ---------------------------------------------------------------------
+
 router.delete('/jogos/:id', function (req, res) {
   Jogo.findOneAndDelete({ $or: [{ id: req.params.id }, { _id: req.params.id }] })
     .then(function (data) {
@@ -86,9 +73,7 @@ router.delete('/jogos/:id', function (req, res) {
     .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
 });
 
-// ---------------------------------------------------------------------
-// GET /autores
-// ---------------------------------------------------------------------
+
 router.get('/autores', function (req, res) {
   Jogo.aggregate([
     { $unwind: '$autores' },
@@ -103,9 +88,7 @@ router.get('/autores', function (req, res) {
     .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
 });
 
-// ---------------------------------------------------------------------
-// GET /categorias
-// ---------------------------------------------------------------------
+
 router.get('/categorias', function (req, res) {
   Jogo.aggregate([
     { $group: {

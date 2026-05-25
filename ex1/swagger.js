@@ -1,6 +1,3 @@
-// Carrega a especificacao OpenAPI a partir de swagger.yml e exporta
-// {swaggerUi, swaggerSpec} para o app.js montar em /api-docs.
-
 var fs = require('fs');
 var path = require('path');
 var yaml = require('js-yaml');

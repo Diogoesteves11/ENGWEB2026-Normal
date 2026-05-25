@@ -6,10 +6,6 @@ function escapeRegex(s) {
   return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// ---------------------------------------------------------------------
-// GET /api/livros            -> lista todos
-// GET /api/livros?search=X   -> filtra por titulo OU autor (case-insensitive)
-// ---------------------------------------------------------------------
 router.get('/', async function (req, res) {
   try {
     var filtro = {};
@@ -24,9 +20,6 @@ router.get('/', async function (req, res) {
   }
 });
 
-// ---------------------------------------------------------------------
-// POST /api/livros  -> cria um novo livro
-// ---------------------------------------------------------------------
 router.post('/', async function (req, res) {
   try {
     var livro = await Livro.create(req.body);
@@ -36,10 +29,6 @@ router.post('/', async function (req, res) {
   }
 });
 
-// ---------------------------------------------------------------------
-// PUT /api/livros/:id  -> actualiza (toggle do campo "lido", mas aceita
-// qualquer subset dos campos do schema).
-// ---------------------------------------------------------------------
 router.put('/:id', async function (req, res) {
   try {
     var livro = await Livro.findByIdAndUpdate(
@@ -54,9 +43,6 @@ router.put('/:id', async function (req, res) {
   }
 });
 
-// ---------------------------------------------------------------------
-// DELETE /api/livros/:id
-// ---------------------------------------------------------------------
 router.delete('/:id', async function (req, res) {
   try {
     var livro = await Livro.findByIdAndDelete(req.params.id);

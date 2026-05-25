@@ -27,17 +27,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Swagger UI em /api-docs
 app.use('/api-docs', swagger.swaggerUi.serve, swagger.swaggerUi.setup(swagger.swaggerSpec));
 
 app.use('/', indexRouter);
 
-// Handler 404
 app.use(function (req, res, next) {
   res.status(404).json({ error: 'Not found', path: req.originalUrl });
 });
 
-// Handler de erros
 app.use(function (err, req, res, next) {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message });

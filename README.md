@@ -20,7 +20,7 @@ Pre-requisito unico: **Docker + docker compose**.
 docker compose up -d --build
 ```
 
-Aguardar ~10 segundos pela inicializacao do Mongo. URLs disponiveis:
+Aguardar  pela inicializacao do Mongo. URLs disponiveis:
 
 | Servico             | URL                                           |
 |---------------------|-----------------------------------------------|
