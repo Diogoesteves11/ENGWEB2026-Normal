@@ -1,95 +1,122 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
-var Recurso = require('../models/recurso'); // TODO amanha: renomear
+var Jogo = require('../models/jogo');
 
-// Ping
 router.get('/', function (req, res) {
-  res.jsonp({ ok: true, msg: 'API EngWeb pronta' });
+  res.jsonp({ ok: true, msg: 'API jogostabuleiro pronta' });
 });
 
-// =====================================================================
-// CRUD generico  -  trocar "/recursos" pelo nome pedido (e.g. /edicoes).
-// O model usa { strict: false }, por isso aceita qualquer shape de
-// documento que importes.
-// =====================================================================
-
-// GET /recursos                  -> lista completa
-// GET /recursos?campo=valor      -> filtro simples por query-string
-router.get('/recursos', function (req, res) {
-  var filtro = {};
-  // TODO amanha: mapear query-strings (ex.: ?org=X) para campos do dataset
-  // if (req.query.CAMPO) filtro.CAMPO = req.query.CAMPO;
-
-  Recurso.find(filtro)
-    .then(function (data) { res.jsonp(data); })
-    .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
+// ---------------------------------------------------------------------
+// GET /jogos
+//   - sem query  -> lista resumida: _id, name, year, category, minPlayers
+//   - ?editora=E -> jogos publicados pela editora E: _id, id, name, year
+// ---------------------------------------------------------------------
+router.get('/jogos', function (req, res) {
+  if (req.query.editora) {
+    Jogo.find(
+      {
+        $or: [
+          { 'editoras.id': req.query.editora },
+          { 'editoras.name': req.query.editora }
+        ]
+      },
+      { _id: 1, name: 1, year: 1 }
+    )
+      .then(function (data) { res.jsonp(data); })
+      .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
+  } else {
+    Jogo.find(
+      {},
+      { _id: 1, name: 1, year: 1, category: 1, minPlayers: 1 }
+    )
+      .then(function (data) { res.jsonp(data); })
+      .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
+  }
 });
 
-// GET /recursos/:id
-router.get('/recursos/:id', function (req, res) {
-  Recurso.findOne({ id: req.params.id })
+// ---------------------------------------------------------------------
+// GET /jogos/:id  -> documento completo (todos os campos)
+// ---------------------------------------------------------------------
+router.get('/jogos/:id', function (req, res) {
+  Jogo.findOne({ $or: [{ id: req.params.id }, { _id: req.params.id }] })
     .then(function (data) {
-      if (!data) return res.status(404).jsonp({ error: 'Nao encontrado' });
+      if (!data) return res.status(404).jsonp({ error: 'Jogo nao encontrado: ' + req.params.id });
       res.jsonp(data);
     })
     .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
 });
 
-// POST /recursos
-router.post('/recursos', function (req, res) {
-  Recurso.create(req.body)
+// ---------------------------------------------------------------------
+// POST /jogos  -> cria um novo jogo
+// ---------------------------------------------------------------------
+router.post('/jogos', function (req, res) {
+  var doc = Object.assign({}, req.body);
+  if (!doc._id) doc._id = doc.id || crypto.randomUUID();
+  Jogo.create(doc)
     .then(function (data) { res.status(201).jsonp(data); })
     .catch(function (err) { res.status(400).jsonp({ error: err.message }); });
 });
 
-// PUT /recursos/:id
-router.put('/recursos/:id', function (req, res) {
-  Recurso.findOneAndUpdate({ id: req.params.id }, req.body, { new: true })
+// ---------------------------------------------------------------------
+// PUT /jogos/:id  -> altera o jogo identificado por id
+// ---------------------------------------------------------------------
+router.put('/jogos/:id', function (req, res) {
+  Jogo.findOneAndUpdate(
+    { $or: [{ id: req.params.id }, { _id: req.params.id }] },
+    req.body,
+    { new: true }
+  )
     .then(function (data) {
-      if (!data) return res.status(404).jsonp({ error: 'Nao encontrado' });
+      if (!data) return res.status(404).jsonp({ error: 'Jogo nao encontrado: ' + req.params.id });
       res.jsonp(data);
     })
     .catch(function (err) { res.status(400).jsonp({ error: err.message }); });
 });
 
-// DELETE /recursos/:id
-router.delete('/recursos/:id', function (req, res) {
-  Recurso.findOneAndDelete({ id: req.params.id })
+// ---------------------------------------------------------------------
+// DELETE /jogos/:id
+// ---------------------------------------------------------------------
+router.delete('/jogos/:id', function (req, res) {
+  Jogo.findOneAndDelete({ $or: [{ id: req.params.id }, { _id: req.params.id }] })
     .then(function (data) {
-      if (!data) return res.status(404).jsonp({ error: 'Nao encontrado' });
+      if (!data) return res.status(404).jsonp({ error: 'Jogo nao encontrado: ' + req.params.id });
       res.jsonp({ ok: true, removed: data });
     })
     .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
 });
 
-// =====================================================================
-// Padroes de agregacao que costumam aparecer (apagar/adaptar amanha).
-// =====================================================================
+// ---------------------------------------------------------------------
+// GET /autores
+// ---------------------------------------------------------------------
+router.get('/autores', function (req, res) {
+  Jogo.aggregate([
+    { $unwind: '$autores' },
+    { $group: {
+        _id: '$autores.name',
+        jogos: { $addToSet: { id: '$id', nome: '$name' } }
+    } },
+    { $project: { _id: 0, nome: '$_id', jogos: 1 } },
+    { $sort: { nome: 1 } }
+  ])
+    .then(function (data) { res.jsonp(data); })
+    .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
+});
 
-// distinct ordenado (e.g. lista de autores/interpretes/...)
-// router.get('/distintos', async function (req, res) {
-//   try {
-//     var pipeline = [
-//       { $unwind: '$SUB_ARRAY' },
-//       { $group: { _id: { nome: '$SUB_ARRAY.NOME', extra: '$SUB_ARRAY.EXTRA' } } },
-//       { $project: { _id: 0, nome: '$_id.nome', extra: '$_id.extra' } },
-//       { $sort: { nome: 1 } },
-//     ];
-//     res.jsonp(await Recurso.aggregate(pipeline));
-//   } catch (err) { res.status(500).jsonp({ error: err.message }); }
-// });
-
-// group-by com lista (e.g. /paises?papel=org -> pais + [anos])
-// router.get('/agrupado', async function (req, res) {
-//   try {
-//     var pipeline = [
-//       { $match: { CAMPO_CHAVE: { $exists: true } } },
-//       { $group: { _id: '$CAMPO_CHAVE', valores: { $addToSet: '$CAMPO_ANO' } } },
-//       { $project: { _id: 0, chave: '$_id', valores: 1 } },
-//       { $sort: { chave: 1 } },
-//     ];
-//     res.jsonp(await Recurso.aggregate(pipeline));
-//   } catch (err) { res.status(500).jsonp({ error: err.message }); }
-// });
+// ---------------------------------------------------------------------
+// GET /categorias
+// ---------------------------------------------------------------------
+router.get('/categorias', function (req, res) {
+  Jogo.aggregate([
+    { $group: {
+        _id: '$category',
+        jogos: { $addToSet: { id: '$id', nome: '$name' } }
+    } },
+    { $project: { _id: 0, categoria: '$_id', jogos: 1 } },
+    { $sort: { categoria: 1 } }
+  ])
+    .then(function (data) { res.jsonp(data); })
+    .catch(function (err) { res.status(500).jsonp({ error: err.message }); });
+});
 
 module.exports = router;

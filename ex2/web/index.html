@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Minha Lista de Leituras</title>
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="w3-light-grey">
+
+    <div id="app" class="w3-container w3-margin">
+        
+        <header class="w3-container w3-indigo w3-round w3-margin-bottom w3-padding">
+            <h1 class="w3-center">📚 A Minha Lista de Leituras</h1>
+        </header>
+
+        <div class="w3-row-padding">
+            <div class="w3-col m4">
+                <div class="w3-card-4 w3-white w3-round">
+                    <header class="w3-container w3-teal w3-round-top">
+                        <h3>Adicionar Livro</h3>
+                    </header>
+                    <form @submit.prevent="adicionarLivro" class="w3-container w3-padding">
+                        <label><b>Título</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" v-model="novoLivro.titulo" required>
+                        
+                        <label><b>Autor</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" v-model="novoLivro.autor" required>
+                        
+                        <label><b>Páginas</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="number" v-model="novoLivro.paginas" required>
+                        
+                        <label><b>Género</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" v-model="novoLivro.genero" required>
+                        
+                        <button type="submit" class="w3-button w3-block w3-indigo w3-round">Guardar Livro</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="w3-col m8">
+                <div class="w3-margin-bottom">
+                    <input 
+                        class="w3-input w3-border w3-padding w3-round" 
+                        type="text" 
+                        placeholder="Pesquisar por título ou autor..." 
+                        v-model="searchQuery" 
+                        @input="obterLivros"
+                    >
+                </div>
+
+                <div class="w3-card-4 w3-white w3-round w3-responsive">
+                    <table class="w3-table-all w3-hoverable">
+                        <thead>
+                            <tr class="w3-teal">
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Páginas</th>
+                                <th>Género</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-if="livros.length === 0">
+                                <td colspan="6" class="w3-center">Nenhum livro encontrado.</td>
+                            </tr>
+                            <tr v-for="livro in livros" :key="livro._id">
+                                <td><b>{{ livro.titulo }}</b></td>
+                                <td>{{ livro.autor }}</td>
+                                <td>{{ livro.paginas }}</td>
+                                <td>{{ livro.genero }}</td>
+                                <td>
+                                    <span v-if="livro.lido" class="w3-text-green"><b>Lido</b></span>
+                                    <span v-else class="w3-text-orange"><b>Por Ler</b></span>
+                                </td>
+                                <td>
+                                    <button 
+                                        @click="alterarEstado(livro)" 
+                                        class="w3-button w3-small w3-round w3-margin-right"
+                                        :class="livro.lido ? 'w3-grey' : 'w3-green'">
+                                        {{ livro.lido ? 'Marcar por Ler' : 'Marcar Lido' }}
+                                    </button>
+                                    
+                                    <button @click="removerLivro(livro._id)" class="w3-button w3-small w3-red w3-round">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="w3-container w3-indigo w3-center w3-margin-top w3-padding w3-round">
+            <p>EngWeb2026: exame de época normal - 25 de Maio de 2026, 10h30, sala Ed.1 - 1.10</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    apiUrl: 'http://localhost:19020/api/livros',
+                    livros: [],
+                    searchQuery: '',
+                    novoLivro: {
+                        titulo: '',
+                        autor: '',
+                        paginas: null,
+                        genero: ''
+                    }
+                }
+            },
+            methods: {
+                // GET: Obter livros (com ou sem pesquisa)
+                async obterLivros() {
+                    try {
+                        let url = this.apiUrl;
+                        if (this.searchQuery) {
+                            url += `?search=${encodeURIComponent(this.searchQuery)}`;
+                        }
+                        const response = await axios.get(url);
+                        this.livros = response.data;
+                    } catch (error) {
+                        console.error("Erro ao obter a lista de livros:", error);
+                    }
+                },
+                
+                // POST: Adicionar um novo livro
+                async adicionarLivro() {
+                    try {
+                        await axios.post(this.apiUrl, this.novoLivro);
+                        this.novoLivro = { titulo: '', autor: '', paginas: null, genero: '' }; // Limpa o formulário
+                        this.obterLivros(); // Atualiza a lista
+                    } catch (error) {
+                        console.error("Erro ao adicionar livro:", error);
+                        alert("Não foi possível adicionar o livro.");
+                    }
+                },
+
+                // PUT: Alternar o estado de leitura
+                async alterarEstado(livro) {
+                    try {
+                        const novoEstado = !livro.lido;
+                        await axios.put(`${this.apiUrl}/${livro._id}`, { lido: novoEstado });
+                        this.obterLivros(); // Atualiza a lista para refletir a alteração
+                    } catch (error) {
+                        console.error("Erro ao atualizar estado:", error);
+                    }
+                },
+
+                // DELETE: Remover um livro
+                async removerLivro(id) {
+                    if (confirm("Tens a certeza que pretendes eliminar este livro da tua lista?")) {
+                        try {
+                            await axios.delete(`${this.apiUrl}/${id}`);
+                            this.obterLivros(); // Atualiza a lista
+                        } catch (error) {
+                            console.error("Erro ao remover o livro:", error);
+                        }
+                    }
+                }
+            },
+            mounted() {
+                this.obterLivros();
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

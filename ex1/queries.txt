@@ -1,0 +1,125 @@
+==================================================================
+EngWeb 2026 - Exame normal
+Exercicio 1.2 - Queries (warm-up)
+==================================================================
+
+------------------------------------------------------------------
+# 1. Quantos jogos estao registados na base de dados?
+------------------------------------------------------------------
+
+db.jogos.countDocuments({})
+
+# Resultado: 27
+
+
+------------------------------------------------------------------
+# 2. Quantos jogos pertencem a categoria "Family"? 
+------------------------------------------------------------------
+
+db.jogos.countDocuments({ category: "Family" })
+
+# Resultado: 8
+
+
+------------------------------------------------------------------
+# 3. Lista de autores (ordenada alfabeticamente, sem repeticoes).
+------------------------------------------------------------------
+
+db.jogos.aggregate([
+  { $unwind: "$autores" },
+  { $group: { _id: "$autores.name" } },
+  { $project: { _id: 0, autor: "$_id" } },
+  { $sort: { autor: 1 } }
+])
+
+# Resultado:
+[
+  { autor: 'Alan R. Moon' },
+  { autor: 'Andreas Seyfarth' },
+  { autor: 'Antoine Bauza' },
+  { autor: 'Christian T. Petersen' },
+  { autor: 'Cole Wehrle' },
+  { autor: 'Donald X. Vaccarino' },
+  { autor: 'Elizabeth Hargrave' },
+  { autor: 'Eric M. Lang' },
+  { autor: 'Isaac Childres' },
+  { autor: 'Jacob Fryxelius' },
+  { autor: 'James A. Wilson' },
+  { autor: 'Jamey Stegmaier' },
+  { autor: 'Klaus Teuber' },
+  { autor: 'Klaus-Jürgen Wrede' },
+  { autor: 'Marc André' },
+  { autor: 'Martin Wallace' },
+  { autor: 'Mathias Wigge' },
+  { autor: 'Matt Leacock' },
+  { autor: 'Michael Kiesling' },
+  { autor: 'Min & Elwen' }
+]
+
+
+------------------------------------------------------------------
+# 4. Distribuicao de jogos por ano de lancamento.
+------------------------------------------------------------------
+
+db.jogos.aggregate([
+  { $group: { _id: "$year", total: { $sum: 1 } } },
+  { $project: { _id: 0, ano: "$_id", total: 1 } },
+  { $sort: { ano: 1 } }
+])
+
+
+# Resultado:
+[
+  { total: 1, ano: 1995 },
+  { total: 1, ano: 2000 },
+  { total: 1, ano: 2002 },
+  { total: 1, ano: 2004 },
+  { total: 2, ano: 2008 },
+  { total: 1, ano: 2010 },
+  { total: 2, ano: 2011 },
+  { total: 2, ano: 2014 },
+  { total: 2, ano: 2015 },
+  { total: 2, ano: 2016 },
+  { total: 4, ano: 2017 },
+  { total: 3, ano: 2018 },
+  { total: 1, ano: 2019 },
+  { total: 2, ano: 2020 },
+  { total: 2, ano: 2021 }
+]
+
+
+------------------------------------------------------------------
+# 5. Distribuicao de jogos por editora.
+------------------------------------------------------------------
+
+db.jogos.aggregate([
+  { $unwind: "$editoras" },
+  { $group: { _id: "$editoras.name", total: { $sum: 1 } } },
+  { $project: { _id: 0, editora: "$_id", total: 1 } },
+  { $sort: { editora: 1 } }
+])
+
+
+# Resultado:
+[
+  { total: 1, editora: 'CMON' },
+  { total: 1, editora: 'Cephalofair Games' },
+  { total: 2, editora: 'Czech Games Edition' },
+  { total: 1, editora: 'Days of Wonder' },
+  { total: 1, editora: 'Dire Wolf' },
+  { total: 1, editora: 'Fantasy Flight Games' },
+  { total: 1, editora: 'Feuerland Spiele' },
+  { total: 1, editora: 'Flatout Games' },
+  { total: 1, editora: 'FryxGames' },
+  { total: 1, editora: 'Greater Than Games' },
+  { total: 1, editora: 'Hans im Glück' },
+  { total: 1, editora: 'IELLO' },
+  { total: 1, editora: 'KOSMOS' },
+  { total: 1, editora: 'Leder Games' },
+  { total: 1, editora: 'Lookout Games' },
+  { total: 1, editora: 'Plan B Games' },
+  { total: 2, editora: 'Ravensburger' },
+  { total: 1, editora: 'Repos Production' },
+  { total: 1, editora: 'Rio Grande Games' },
+  { total: 1, editora: 'Roxley' }
+]

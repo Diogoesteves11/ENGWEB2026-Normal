@@ -5,9 +5,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var cors = require('cors');
 
-// === Config (alterar amanha conforme o enunciado) ===
-// TODO amanha: trocar DB_NAME pelo nome pedido no enunciado.
-var DB_NAME = process.env.DB_NAME || 'engweb';
+
+var DB_NAME = process.env.DB_NAME || 'jogostabuleiro';
 var MONGO_URL = process.env.MONGO_URL || ('mongodb://127.0.0.1:27017/' + DB_NAME);
 
 mongoose.connect(MONGO_URL);
@@ -18,6 +17,7 @@ db.once('open', () => {
 });
 
 var indexRouter = require('./routes/index');
+var swagger = require('./swagger');
 
 var app = express();
 
@@ -26,6 +26,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Swagger UI em /api-docs
+app.use('/api-docs', swagger.swaggerUi.serve, swagger.swaggerUi.setup(swagger.swaggerSpec));
 
 app.use('/', indexRouter);
 

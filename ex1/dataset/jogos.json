@@ -1,0 +1,1009 @@
+[
+  {
+    "id": "catan",
+    "name": "Catan",
+    "year": 1995,
+    "category": "Family",
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Players take on the roles of settlers, each attempting to build and develop holdings while trading and acquiring resources.",
+    "autores": [
+      {
+        "id": "klaus-teuber",
+        "name": "Klaus Teuber"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "kosmos",
+        "name": "KOSMOS",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "route-building",
+        "name": "Route Building"
+      },
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      },
+      {
+        "id": "dice-rolling",
+        "name": "Dice Rolling"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-1995",
+        "name": "Spiel des Jahres",
+        "year": 1995
+      }
+    ]
+  },
+  {
+    "id": "ticket-to-ride",
+    "name": "Ticket to Ride",
+    "year": 2004,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 60,
+    "descriptionEN": "Players collect cards of various types of train cars they then use to claim railway routes in North America.",
+    "autores": [
+      {
+        "id": "alan-r-moon",
+        "name": "Alan R. Moon"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "days-of-wonder",
+        "name": "Days of Wonder",
+        "country": "France"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "route-building",
+        "name": "Route Building"
+      },
+      {
+        "id": "hand-management",
+        "name": "Hand Management"
+      },
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2004",
+        "name": "Spiel des Jahres",
+        "year": 2004
+      }
+    ]
+  },
+  {
+    "id": "scythe",
+    "name": "Scythe",
+    "year": 2016,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 115,
+    "descriptionEN": "An engine-building, asymmetric, competitive board game set in an alternate-history 1920s period.",
+    "autores": [
+      {
+        "id": "jamey-stegmaier",
+        "name": "Jamey Stegmaier"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "stonemaier-games",
+        "name": "Stonemaier Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "engine-building",
+        "name": "Engine Building"
+      },
+      {
+        "id": "grid-movement",
+        "name": "Grid Movement"
+      },
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "area-majority",
+        "name": "Area Majority / Influence"
+      }
+    ],
+    "premios": [
+      {
+        "id": "gg-2016",
+        "name": "Golden Geek Board Game of the Year",
+        "year": 2016
+      }
+    ]
+  },
+  {
+    "id": "terraforming-mars",
+    "name": "Terraforming Mars",
+    "year": 2016,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Players control corporations and buy and play cards to terraform the planet Mars.",
+    "autores": [
+      {
+        "id": "jacob-fryxelius",
+        "name": "Jacob Fryxelius"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "fryxgames",
+        "name": "FryxGames",
+        "country": "Sweden"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "engine-building",
+        "name": "Engine Building"
+      },
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      },
+      {
+        "id": "hand-management",
+        "name": "Hand Management"
+      },
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      }
+    ],
+    "premios": [
+      {
+        "id": "dsp-2017",
+        "name": "Deutscher Spiele Preis",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "id": "azul",
+    "name": "Azul",
+    "year": 2017,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 45,
+    "descriptionEN": "Players take turns drafting colored tiles from suppliers to their player board to score points.",
+    "autores": [
+      {
+        "id": "michael-kiesling",
+        "name": "Michael Kiesling"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "plan-b-games",
+        "name": "Plan B Games",
+        "country": "Canada"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      },
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2018",
+        "name": "Spiel des Jahres",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "id": "gloomhaven",
+    "name": "Gloomhaven",
+    "year": 2017,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "A cooperative game of tactical combat in a unique, evolving fantasy world.",
+    "autores": [
+      {
+        "id": "isaac-childres",
+        "name": "Isaac Childres"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "cephalofair",
+        "name": "Cephalofair Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "hand-management",
+        "name": "Hand Management"
+      },
+      {
+        "id": "grid-movement",
+        "name": "Grid Movement"
+      },
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "cooperative-game",
+        "name": "Cooperative Game"
+      }
+    ],
+    "premios": [
+      {
+        "id": "gg-2017",
+        "name": "Golden Geek Board Game of the Year",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "id": "carcassonne",
+    "name": "Carcassonne",
+    "year": 2000,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 45,
+    "descriptionEN": "Players draw and place a tile with a piece of southern French landscape on it.",
+    "autores": [
+      {
+        "id": "klaus-jurgen-wrede",
+        "name": "Klaus-Jürgen Wrede"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "hans-im-gluck",
+        "name": "Hans im Glück",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      },
+      {
+        "id": "area-majority",
+        "name": "Area Majority / Influence"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2001",
+        "name": "Spiel des Jahres",
+        "year": 2001
+      }
+    ]
+  },
+  {
+    "id": "pandemic",
+    "name": "Pandemic",
+    "year": 2008,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 45,
+    "descriptionEN": "Your team of experts must prevent the world from succumbing to a viral pandemic.",
+    "autores": [
+      {
+        "id": "matt-leacock",
+        "name": "Matt Leacock"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "z-man-games",
+        "name": "Z-Man Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      },
+      {
+        "id": "cooperative-game",
+        "name": "Cooperative Game"
+      }
+    ],
+    "premios": [
+      {
+        "id": "gg-2013",
+        "name": "Golden Geek Board Game of the Year",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "id": "wingspan",
+    "name": "Wingspan",
+    "year": 2019,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 70,
+    "descriptionEN": "Attract a beautiful and diverse collection of birds to your wildlife preserve.",
+    "autores": [
+      {
+        "id": "elizabeth-hargrave",
+        "name": "Elizabeth Hargrave"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "stonemaier-games",
+        "name": "Stonemaier Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "card-drafting",
+        "name": "Card Drafting"
+      },
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      }
+    ],
+    "premios": [
+      {
+        "id": "ksdj-2019",
+        "name": "Kennerspiel des Jahres",
+        "year": 2019
+      }
+    ]
+  },
+  {
+    "id": "codenames",
+    "name": "Codenames",
+    "year": 2015,
+    "category": "Party",
+    "minPlayers": 2,
+    "maxPlayers": 8,
+    "playingTimeMinutes": 15,
+    "descriptionEN": "Give your team clever one-word clues to help them spot their agents in the field.",
+    "autores": [
+      {
+        "id": "vlaada-chvatil",
+        "name": "Vlaada Chvátil"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "czech-games-edition",
+        "name": "Czech Games Edition",
+        "country": "Czech Republic"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "push-your-luck",
+        "name": "Push Your Luck"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2016",
+        "name": "Spiel des Jahres",
+        "year": 2016
+      }
+    ]
+  },
+  {
+    "id": "7-wonders",
+    "name": "7 Wonders",
+    "year": 2010,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 7,
+    "playingTimeMinutes": 30,
+    "descriptionEN": "Draft cards to develop your ancient civilization and build its Wonder of the World.",
+    "autores": [
+      {
+        "id": "antoine-bauza",
+        "name": "Antoine Bauza"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "repos-production",
+        "name": "Repos Production",
+        "country": "Belgium"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "card-drafting",
+        "name": "Card Drafting"
+      }
+    ],
+    "premios": [
+      {
+        "id": "dsp-2011",
+        "name": "Deutscher Spiele Preis",
+        "year": 2011
+      }
+    ]
+  },
+  {
+    "id": "splendor",
+    "name": "Splendor",
+    "year": 2014,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 30,
+    "descriptionEN": "Renaissance merchants race to grab gems, acquire property, and please nobility.",
+    "autores": [
+      {
+        "id": "marc-andre",
+        "name": "Marc André"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "space-cowboys",
+        "name": "Space Cowboys",
+        "country": "France"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "set-collection",
+        "name": "Set Collection"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "root",
+    "name": "Root",
+    "year": 2018,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 90,
+    "descriptionEN": "A game of woodland might and right, with highly asymmetric factions.",
+    "autores": [
+      {
+        "id": "cole-wehrle",
+        "name": "Cole Wehrle"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "leder-games",
+        "name": "Leder Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "area-majority",
+        "name": "Area Majority / Influence"
+      }
+    ],
+    "premios": [
+      {
+        "id": "gg-2018",
+        "name": "Golden Geek Board Game of the Year",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "id": "everdell",
+    "name": "Everdell",
+    "year": 2018,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 80,
+    "descriptionEN": "A game of dynamic tableau building and worker placement in a charming forest.",
+    "autores": [
+      {
+        "id": "james-a-wilson",
+        "name": "James A. Wilson"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "starling-games",
+        "name": "Starling Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "worker-placement",
+        "name": "Worker Placement"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "brass-birmingham",
+    "name": "Brass: Birmingham",
+    "year": 2018,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Build networks, grow industries, and navigate the world of the Industrial Revolution.",
+    "autores": [
+      {
+        "id": "martin-wallace",
+        "name": "Martin Wallace"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "roxley",
+        "name": "Roxley",
+        "country": "Canada"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "network-building",
+        "name": "Network and Route Building"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "castles-of-burgundy",
+    "name": "The Castles of Burgundy",
+    "year": 2011,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 90,
+    "descriptionEN": "Plan, trade, and build your Burgundian estate to prosperity and prominence.",
+    "autores": [
+      {
+        "id": "stefan-feld",
+        "name": "Stefan Feld"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "ravensburger",
+        "name": "Ravensburger",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "dice-rolling",
+        "name": "Dice Rolling"
+      },
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "cascadia",
+    "name": "Cascadia",
+    "year": 2021,
+    "category": "Family",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 45,
+    "descriptionEN": "Create the most harmonious ecosystem as you draft habitats and wildlife.",
+    "autores": [
+      {
+        "id": "randy-flynn",
+        "name": "Randy Flynn"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "flatout-games",
+        "name": "Flatout Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2022",
+        "name": "Spiel des Jahres",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "id": "blood-rage",
+    "name": "Blood Rage",
+    "year": 2015,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 90,
+    "descriptionEN": "Ragnarök has come! Draft cards, lead your Viking clan to glory, and die in battle.",
+    "autores": [
+      {
+        "id": "eric-m-lang",
+        "name": "Eric M. Lang"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "cmon",
+        "name": "CMON",
+        "country": "Singapore"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "card-drafting",
+        "name": "Card Drafting"
+      },
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "area-majority",
+        "name": "Area Majority / Influence"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "ark-nova",
+    "name": "Ark Nova",
+    "year": 2021,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 150,
+    "descriptionEN": "Plan and design a modern, scientifically managed zoo to support conservation projects.",
+    "autores": [
+      {
+        "id": "mathias-wigge",
+        "name": "Mathias Wigge"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "feuerland-spiele",
+        "name": "Feuerland Spiele",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "deck-building",
+        "name": "Deck, Bag, and Pool Building"
+      }
+    ],
+    "premios": [
+      {
+        "id": "dsp-2022",
+        "name": "Deutscher Spiele Preis",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "id": "spirit-island",
+    "name": "Spirit Island",
+    "year": 2017,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Island Spirits join forces to defend their home from colonizing Invaders.",
+    "autores": [
+      {
+        "id": "r-eric-reuss",
+        "name": "R. Eric Reuss"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "greater-than-games",
+        "name": "Greater Than Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "cooperative-game",
+        "name": "Cooperative Game"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "dune-imperium",
+    "name": "Dune: Imperium",
+    "year": 2020,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Influence, intrigue, and combat in the universe of Dune using deck-building and worker placement.",
+    "autores": [
+      {
+        "id": "paul-dennen",
+        "name": "Paul Dennen"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "dire-wolf",
+        "name": "Dire Wolf",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "deck-building",
+        "name": "Deck, Bag, and Pool Building"
+      },
+      {
+        "id": "worker-placement",
+        "name": "Worker Placement"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "lost-ruins-of-arnak",
+    "name": "Lost Ruins of Arnak",
+    "year": 2020,
+    "category": "Strategy",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 120,
+    "descriptionEN": "Explore a mysterious island, discover artifacts, and face formidable guardians.",
+    "autores": [
+      {
+        "id": "min-elwen",
+        "name": "Min & Elwen"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "czech-games-edition",
+        "name": "Czech Games Edition",
+        "country": "Czech Republic"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "deck-building",
+        "name": "Deck, Bag, and Pool Building"
+      },
+      {
+        "id": "worker-placement",
+        "name": "Worker Placement"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "dominion",
+    "name": "Dominion",
+    "year": 2008,
+    "category": "Strategy",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playingTimeMinutes": 30,
+    "descriptionEN": "Acquire lands, hire subjects, and build the ultimate deck to rule your kingdom.",
+    "autores": [
+      {
+        "id": "donald-x-vaccarino",
+        "name": "Donald X. Vaccarino"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "rio-grande-games",
+        "name": "Rio Grande Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "deck-building",
+        "name": "Deck, Bag, and Pool Building"
+      }
+    ],
+    "premios": [
+      {
+        "id": "sdj-2009",
+        "name": "Spiel des Jahres",
+        "year": 2009
+      }
+    ]
+  },
+  {
+    "id": "twilight-imperium-4",
+    "name": "Twilight Imperium: Fourth Edition",
+    "year": 2017,
+    "category": "Strategy",
+    "minPlayers": 3,
+    "maxPlayers": 6,
+    "playingTimeMinutes": 480,
+    "descriptionEN": "Build an empire through trade, politics, and warfare in a galaxy-spanning space opera.",
+    "autores": [
+      {
+        "id": "christian-t-petersen",
+        "name": "Christian T. Petersen"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "fantasy-flight-games",
+        "name": "Fantasy Flight Games",
+        "country": "USA"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "variable-player-powers",
+        "name": "Variable Player Powers"
+      },
+      {
+        "id": "area-majority",
+        "name": "Area Majority / Influence"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "patchwork",
+    "name": "Patchwork",
+    "year": 2014,
+    "category": "Family",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "playingTimeMinutes": 30,
+    "descriptionEN": "Compete to build the most aesthetic (and high-scoring) patchwork quilt.",
+    "autores": [
+      {
+        "id": "uwe-rosenberg",
+        "name": "Uwe Rosenberg"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "lookout-games",
+        "name": "Lookout Games",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "tile-placement",
+        "name": "Tile Placement"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "king-of-tokyo",
+    "name": "King of Tokyo",
+    "year": 2011,
+    "category": "Party",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playingTimeMinutes": 30,
+    "descriptionEN": "Mutant monsters, gigantic robots, and fierce aliens battle for control of Tokyo.",
+    "autores": [
+      {
+        "id": "richard-garfield",
+        "name": "Richard Garfield"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "iello",
+        "name": "IELLO",
+        "country": "France"
+      }
+    ],
+    "mecanicas": [
+      {
+        "id": "dice-rolling",
+        "name": "Dice Rolling"
+      },
+      {
+        "id": "push-your-luck",
+        "name": "Push Your Luck"
+      }
+    ],
+    "premios": []
+  },
+  {
+    "id": "puerto-rico",
+    "name": "Puerto Rico",
+    "year": 2002,
+    "category": "Strategy",
+    "minPlayers": 3,
+    "maxPlayers": 5,
+    "playingTimeMinutes": 150,
+    "descriptionEN": "Ship goods, construct buildings, and choose roles to become the most prosperous in Puerto Rico.",
+    "autores": [
+      {
+        "id": "andreas-seyfarth",
+        "name": "Andreas Seyfarth"
+      }
+    ],
+    "editoras": [
+      {
+        "id": "ravensburger",
+        "name": "Ravensburger",
+        "country": "Germany"
+      }
+    ],
+    "mecanicas": [],
+    "premios": []
+  }
+]

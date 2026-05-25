@@ -1,0 +1,235 @@
+openapi: 3.0.0
+info:
+  title: API Jogos de Tabuleiro - EngWeb 2026
+  version: 1.0.0
+  description: >-
+    API de dados para gerir uma coleccao de jogos de tabuleiro
+    (exame normal, EngWeb 2026).
+  contact:
+    name: Diogo Esteves
+servers:
+  - url: http://localhost:17000
+    description: Servidor local (docker / npm start)
+tags:
+  - name: Jogos
+    description: CRUD sobre a coleccao "jogos"
+  - name: Agregados
+    description: Listas agrupadas (autores, categorias)
+
+components:
+  schemas:
+    Pessoa:
+      type: object
+      properties:
+        id:   { type: string, example: klaus-teuber }
+        name: { type: string, example: Klaus Teuber }
+    Editora:
+      type: object
+      properties:
+        id:      { type: string, example: kosmos }
+        name:    { type: string, example: KOSMOS }
+        country: { type: string, example: Germany }
+    Mecanica:
+      type: object
+      properties:
+        id:   { type: string, example: tile-placement }
+        name: { type: string, example: Tile Placement }
+    Premio:
+      type: object
+      properties:
+        id:   { type: string,  example: sdj-1995 }
+        name: { type: string,  example: Spiel des Jahres }
+        year: { type: integer, example: 1995 }
+    Jogo:
+      type: object
+      properties:
+        _id:                { type: string,  example: catan }
+        id:                 { type: string,  example: catan }
+        name:               { type: string,  example: Catan }
+        year:               { type: integer, example: 1995 }
+        category:           { type: string,  example: Family }
+        minPlayers:         { type: integer, example: 3 }
+        maxPlayers:         { type: integer, example: 4 }
+        playingTimeMinutes: { type: integer, example: 120 }
+        descriptionEN:      { type: string }
+        autores:   { type: array, items: { $ref: '#/components/schemas/Pessoa' } }
+        editoras:  { type: array, items: { $ref: '#/components/schemas/Editora' } }
+        mecanicas: { type: array, items: { $ref: '#/components/schemas/Mecanica' } }
+        premios:   { type: array, items: { $ref: '#/components/schemas/Premio' } }
+    JogoResumo:
+      type: object
+      properties:
+        _id:        { type: string }
+        name:       { type: string }
+        year:       { type: integer }
+        category:   { type: string }
+        minPlayers: { type: integer }
+    JogoEditora:
+      type: object
+      properties:
+        _id:  { type: string }
+        name: { type: string }
+        year: { type: integer }
+    AutorAgregado:
+      type: object
+      properties:
+        nome: { type: string, example: Klaus Teuber }
+        jogos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:   { type: string, example: catan }
+              nome: { type: string, example: Catan }
+    CategoriaAgregada:
+      type: object
+      properties:
+        categoria: { type: string, example: Family }
+        jogos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:   { type: string, example: catan }
+              nome: { type: string, example: Catan }
+    Erro:
+      type: object
+      properties:
+        error: { type: string }
+
+paths:
+  /jogos:
+    get:
+      tags: [Jogos]
+      summary: Lista jogos (com filtro opcional por editora)
+      parameters:
+        - in: query
+          name: editora
+          schema: { type: string }
+          description: Filtra pelos jogos publicados pela editora (id ou nome).
+          example: kosmos
+      responses:
+        '200':
+          description: Lista de jogos (resumo) ou filtrada por editora.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/JogoResumo'
+                    - $ref: '#/components/schemas/JogoEditora'
+        '500':
+          description: Erro interno
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+    post:
+      tags: [Jogos]
+      summary: Cria um novo jogo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Jogo' }
+      responses:
+        '201':
+          description: Jogo criado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Jogo' }
+        '400':
+          description: Erro de validacao
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+
+  /jogos/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+        example: catan
+    get:
+      tags: [Jogos]
+      summary: Devolve o documento completo do jogo
+      responses:
+        '200':
+          description: Jogo
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Jogo' }
+        '404':
+          description: Nao encontrado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+    put:
+      tags: [Jogos]
+      summary: Actualiza o jogo identificado por id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Jogo' }
+      responses:
+        '200':
+          description: Jogo actualizado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Jogo' }
+        '404':
+          description: Nao encontrado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+        '400':
+          description: Erro de validacao
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+    delete:
+      tags: [Jogos]
+      summary: Apaga o jogo identificado por id
+      responses:
+        '200':
+          description: Jogo apagado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:      { type: boolean, example: true }
+                  removed: { $ref: '#/components/schemas/Jogo' }
+        '404':
+          description: Nao encontrado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+
+  /autores:
+    get:
+      tags: [Agregados]
+      summary: Lista alfabetica de autores (sem repeticoes) com os jogos que criaram
+      responses:
+        '200':
+          description: Lista de autores agregados
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/AutorAgregado' }
+
+  /categorias:
+    get:
+      tags: [Agregados]
+      summary: Lista alfabetica de categorias (sem repeticoes) com os jogos pertencentes
+      responses:
+        '200':
+          description: Lista de categorias agregadas
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/CategoriaAgregada' }

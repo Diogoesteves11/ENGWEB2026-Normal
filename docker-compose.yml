@@ -5,42 +5,56 @@ services:
       dockerfile: Dockerfile
     container_name: mongodb
     environment:
-      - MONGO_INITDB_DATABASE=engweb
-    ports:
-      - "27017:27017"
+      - MONGO_INITDB_DATABASE=jogostabuleiro
     volumes:
       - mongodb:/data/db
     networks:
       - engweb
 
+  # ex1 - API de dados sobre Jogos de Tabuleiro
   data-api:
     build:
       context: ./ex1
       dockerfile: Dockerfile
     container_name: data-api
     environment:
-      - MONGO_URL=mongodb://mongodb:27017/engweb
-      - DB_NAME=engweb
-      - PORT=25000
+      - MONGO_URL=mongodb://mongodb:27017/jogostabuleiro
+      - DB_NAME=jogostabuleiro
+      - PORT=17000
     ports:
-      - "25000:25000"
+      - "17000:17000"
     depends_on:
       - mongodb
     networks:
       - engweb
 
-  interface:
+  # ex2 - API "A Minha Lista de Leituras"
+  api-livros:
     build:
-      context: ./ex2
+      context: ./ex2/api
       dockerfile: Dockerfile
-    container_name: interface
-    ports:
-      - "25001:25001"
+    container_name: api-livros
     environment:
-      - API_URL=http://data-api:25000
-      - PORT=25001
+      - MONGO_URL=mongodb://mongodb:27017/biblioteca
+      - DB_NAME=biblioteca
+      - PORT=19020
+    ports:
+      - "19020:19020"
     depends_on:
-      - data-api
+      - mongodb
+    networks:
+      - engweb
+
+  # ex2 - Nginx a servir o index.html
+  web-livros:
+    build:
+      context: ./ex2/web
+      dockerfile: Dockerfile
+    container_name: web-livros
+    ports:
+      - "19021:80"
+    depends_on:
+      - api-livros
     networks:
       - engweb
 

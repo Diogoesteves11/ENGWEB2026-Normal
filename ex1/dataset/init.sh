@@ -7,7 +7,7 @@
 # primeiro com o script em ex1/scripts/import.js a partir do host.
 set -e
 
-DB="${MONGO_INITDB_DATABASE:-engweb}"
+DB="${MONGO_INITDB_DATABASE:-jogostabuleiro}"
 
 for f in /docker-entrypoint-initdb.d/*.json; do
   [ -e "$f" ] || continue

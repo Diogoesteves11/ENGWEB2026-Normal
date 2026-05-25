@@ -1,0 +1,51 @@
+[
+  {
+    "titulo": "Os Maias",
+    "autor": "Eça de Queirós",
+    "paginas": 720,
+    "genero": "Romance",
+    "lido": true
+  },
+  {
+    "titulo": "Mensagem",
+    "autor": "Fernando Pessoa",
+    "paginas": 96,
+    "genero": "Poesia",
+    "lido": true
+  },
+  {
+    "titulo": "Ensaio sobre a Cegueira",
+    "autor": "José Saramago",
+    "paginas": 312,
+    "genero": "Romance",
+    "lido": false
+  },
+  {
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "paginas": 328,
+    "genero": "Distopia",
+    "lido": true
+  },
+  {
+    "titulo": "O Hobbit",
+    "autor": "J. R. R. Tolkien",
+    "paginas": 310,
+    "genero": "Fantasia",
+    "lido": false
+  },
+  {
+    "titulo": "Clean Code",
+    "autor": "Robert C. Martin",
+    "paginas": 464,
+    "genero": "Tecnologia",
+    "lido": false
+  },
+  {
+    "titulo": "Sapiens",
+    "autor": "Yuval Noah Harari",
+    "paginas": 512,
+    "genero": "História",
+    "lido": true
+  }
+]
